@@ -19,20 +19,27 @@ type LoggingConfigK8s struct {
 	Token     string   `json:"tk"`
 }
 
+type LoggingConfigDocker struct {
+	ContainerName string `json:"cn"`
+	ContainerTag  string `json:"ct"`
+	Dir           string `json:"d"`
+}
+
 type LoggingConfigFile struct {
 	Dir string `json:"d"`
 }
 
 type LoggingConfig struct {
-	Pid      int64              `json:"pid"`
-	T        int                `json:"t"`
-	Exclude  string             `json:"ext,omitempty"`
-	Batch    int                `json:"b"`
-	Buffer   int                `json:"bf"`
-	Interval int                `json:"itv"`
-	Report   string             `json:"rp"`
-	K8s      *LoggingConfigK8s  `json:"k8s,omitempty"`
-	File     *LoggingConfigFile `json:"f,omitempty"`
+	Pid      int64                `json:"pid"`
+	T        int                  `json:"t"`
+	Exclude  string               `json:"ext,omitempty"`
+	Batch    int                  `json:"b"`
+	Buffer   int                  `json:"bf"`
+	Interval int                  `json:"itv"`
+	Report   string               `json:"rp"`
+	K8s      *LoggingConfigK8s    `json:"k8s,omitempty"`
+	Docker   *LoggingConfigDocker `json:"d,omitempty"`
+	File     *LoggingConfigFile   `json:"f,omitempty"`
 }
 
 type LoggingStatusReq struct {
