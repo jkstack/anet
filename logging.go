@@ -59,15 +59,15 @@ type LoggingReportTask struct {
 }
 
 type LoggingReportK8sData struct {
-	QPS          int    `json:"qps,omitempty"`
-	AvgCost      int64  `json:"avg,omitempty"`
-	P0           int64  `json:"p0,omitempty"`
-	P50          int64  `json:"p50,omitempty"`
-	P90          int64  `json:"p90,omitempty"`
-	P99          int64  `json:"p99,omitempty"`
-	P100         int64  `json:"p100,omitempty"`
-	CountService uint64 `json:"ct_svr,omitempty"`
-	CountPod     uint64 `json:"ct_pds,omitempty"`
+	QPS          float64 `json:"qps,omitempty"`
+	AvgCost      float64 `json:"avg,omitempty"`
+	P0           int64   `json:"p0,omitempty"`
+	P50          int64   `json:"p50,omitempty"`
+	P90          int64   `json:"p90,omitempty"`
+	P99          int64   `json:"p99,omitempty"`
+	P100         int64   `json:"p100,omitempty"`
+	CountService uint64  `json:"ct_svr,omitempty"`
+	CountPod     uint64  `json:"ct_pds,omitempty"`
 }
 
 type LoggingReportDockerData struct {
@@ -79,14 +79,14 @@ type LoggingReportFileData struct {
 }
 
 type LoggingReportInfo struct {
-	QPS     int    `json:"qps,omitempty"`
-	AvgCost int64  `json:"avg,omitempty"`
-	P0      int64  `json:"p0,omitempty"`
-	P50     int64  `json:"p50,omitempty"`
-	P90     int64  `json:"p90,omitempty"`
-	P99     int64  `json:"p99,omitempty"`
-	P100    int64  `json:"p100,omitempty"`
-	Bytes   uint64 `json:"b,omitempty"`
+	QPS     float64 `json:"qps,omitempty"`
+	AvgCost float64 `json:"avg,omitempty"`
+	P0      int64   `json:"p0,omitempty"`
+	P50     int64   `json:"p50,omitempty"`
+	P90     int64   `json:"p90,omitempty"`
+	P99     int64   `json:"p99,omitempty"`
+	P100    int64   `json:"p100,omitempty"`
+	Bytes   uint64  `json:"b,omitempty"`
 }
 
 type LoggingReport struct {
