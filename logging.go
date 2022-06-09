@@ -86,6 +86,7 @@ type LoggingReportInfo struct {
 	P90     int64   `json:"p90,omitempty"`
 	P99     int64   `json:"p99,omitempty"`
 	P100    int64   `json:"p100,omitempty"`
+	Count   uint64  `json:"ct,omitempty"`
 	Bytes   uint64  `json:"b,omitempty"`
 }
 
