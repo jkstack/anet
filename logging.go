@@ -1,5 +1,7 @@
 package anet
 
+import "time"
+
 const (
 	LoggingTypeK8s = iota
 	LoggingTypeDocker
@@ -90,6 +92,19 @@ type LoggingReportInfo struct {
 	Bytes   uint64  `json:"b,omitempty"`
 }
 
+type LoggingReportAgentInfo struct {
+	Version    string                    `json:"v"`
+	Threads    int                       `json:"ts"`
+	Routines   int                       `json:"rs"`
+	Startup    int64                     `json:"st"`
+	HeapInuse  uint64                    `json:"hi"`
+	GC         map[float64]time.Duration `json:"gc"`
+	InPackets  uint64                    `json:"ip"`
+	InBytes    uint64                    `json:"ib"`
+	OutPackets uint64                    `json:"op"`
+	OutBytes   uint64                    `json:"ob"`
+}
+
 type LoggingReport struct {
 	CountK8s    uint64                  `json:"ct_k8s,omitempty"`
 	CountDocker uint64                  `json:"ct_dr,omitempty"`
@@ -98,4 +113,5 @@ type LoggingReport struct {
 	Docker      LoggingReportDockerData `json:"dr"`
 	File        LoggingReportFileData   `json:"f"`
 	Info        LoggingReportInfo       `json:"rp"`
+	GoInfo      LoggingReportAgentInfo  `json:"ag"`
 }
