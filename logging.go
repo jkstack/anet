@@ -71,11 +71,11 @@ type LoggingReportK8sData struct {
 }
 
 type LoggingReportDockerData struct {
-	Count uint64 `json:"ct,omitempty"`
+	Count int `json:"ct,omitempty"`
 }
 
 type LoggingReportFileData struct {
-	Count uint64 `json:"ct,omitempty"`
+	Count int `json:"ct,omitempty"`
 }
 
 type LoggingReportInfo struct {
