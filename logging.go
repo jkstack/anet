@@ -113,5 +113,5 @@ type LoggingReport struct {
 	Docker      LoggingReportDockerData `json:"dr"`
 	File        LoggingReportFileData   `json:"f"`
 	Info        LoggingReportInfo       `json:"rp"`
-	GoInfo      LoggingReportAgentInfo  `json:"ag"`
+	AgentInfo   LoggingReportAgentInfo  `json:"ag"`
 }
