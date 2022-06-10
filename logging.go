@@ -1,7 +1,5 @@
 package anet
 
-import "time"
-
 const (
 	LoggingTypeK8s = iota
 	LoggingTypeDocker
@@ -93,16 +91,16 @@ type LoggingReportInfo struct {
 }
 
 type LoggingReportAgentInfo struct {
-	GoVersion  string                    `json:"gv"`
-	Threads    int                       `json:"ts"`
-	Routines   int                       `json:"rs"`
-	Startup    int64                     `json:"st"`
-	HeapInuse  uint64                    `json:"hi"`
-	GC         map[float64]time.Duration `json:"gc"`
-	InPackets  uint64                    `json:"ip"`
-	InBytes    uint64                    `json:"ib"`
-	OutPackets uint64                    `json:"op"`
-	OutBytes   uint64                    `json:"ob"`
+	GoVersion  string              `json:"gv"`
+	Threads    int                 `json:"ts"`
+	Routines   int                 `json:"rs"`
+	Startup    int64               `json:"st"`
+	HeapInuse  uint64              `json:"hi"`
+	GC         map[float64]float64 `json:"gc"`
+	InPackets  uint64              `json:"ip"`
+	InBytes    uint64              `json:"ib"`
+	OutPackets uint64              `json:"op"`
+	OutBytes   uint64              `json:"ob"`
 }
 
 type LoggingReport struct {
