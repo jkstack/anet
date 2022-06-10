@@ -93,7 +93,7 @@ type LoggingReportInfo struct {
 }
 
 type LoggingReportAgentInfo struct {
-	Version    string                    `json:"v"`
+	GoVersion  string                    `json:"gv"`
 	Threads    int                       `json:"ts"`
 	Routines   int                       `json:"rs"`
 	Startup    int64                     `json:"st"`
