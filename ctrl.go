@@ -8,7 +8,6 @@ import (
 type ComePayload struct {
 	ID              string `json:"id"` // agent-id
 	Name            string `json:"name"`
-	Type            string `json:"type"`
 	Version         string `json:"version"`          // 版本号
 	IP              net.IP `json:"ip"`               // ip地址
 	MAC             string `json:"mac"`              // mac地址
