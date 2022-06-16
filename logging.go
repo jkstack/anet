@@ -59,15 +59,16 @@ type LoggingReportTask struct {
 }
 
 type LoggingReportK8sData struct {
-	QPS          float64 `json:"qps,omitempty"`
-	AvgCost      float64 `json:"avg,omitempty"`
-	P0           int64   `json:"p0,omitempty"`
-	P50          int64   `json:"p50,omitempty"`
-	P90          int64   `json:"p90,omitempty"`
-	P99          int64   `json:"p99,omitempty"`
-	P100         int64   `json:"p100,omitempty"`
-	CountService int     `json:"ct_svr,omitempty"`
-	CountPod     int     `json:"ct_pds,omitempty"`
+	QPS            float64 `json:"qps,omitempty"`
+	AvgCost        float64 `json:"avg,omitempty"`
+	P0             int64   `json:"p0,omitempty"`
+	P50            int64   `json:"p50,omitempty"`
+	P90            int64   `json:"p90,omitempty"`
+	P99            int64   `json:"p99,omitempty"`
+	P100           int64   `json:"p100,omitempty"`
+	CountService   int     `json:"ct_svr,omitempty"`
+	CountPod       int     `json:"ct_pds,omitempty"`
+	CountContainer int     `json:"ct_cts,omitempty"`
 }
 
 type LoggingReportDockerData struct {
