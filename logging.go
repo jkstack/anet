@@ -89,6 +89,8 @@ type LoggingReportInfo struct {
 	P100    int64   `json:"p100,omitempty"`
 	Count   uint64  `json:"ct,omitempty"`
 	Bytes   uint64  `json:"b,omitempty"`
+	HttpErr uint64  `json:"he,omitempty"`
+	SrvErr  uint64  `json:"se,omitempty"`
 }
 
 type LoggingReportAgentInfo struct {
