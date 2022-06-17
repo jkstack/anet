@@ -9,6 +9,11 @@ const (
 	TypeHandshake                     // 2：握手消息，服务端返回
 )
 
+const (
+	TypeFoo TypeName = iota + 8 // 8: foo消息
+	TypeBar                     // 9: bar消息
+)
+
 // exec
 const (
 	TypeExec     TypeName = iota + 10 // 10：执行命令
@@ -56,6 +61,10 @@ func (name TypeName) String() string {
 		return "error"
 	case TypeCome:
 		return "come"
+	case TypeFoo:
+		return "foo"
+	case TypeBar:
+		return "bar"
 	case TypeExec:
 		return "exec"
 	case TypeExecd:
