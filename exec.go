@@ -10,6 +10,7 @@ type ExecPayload struct {
 	Pass    string   `json:"pass,omitempty"`    // 提权密码
 	WorkDir string   `json:"workdir,omitempty"` // 工作目录
 	Env     []string `json:"env,omitempty"`     // 运行时的环境变量
+	DeferRM string   `json:"drm,omitempty"`
 }
 
 // ExecdPayload execd payload
