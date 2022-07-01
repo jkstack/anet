@@ -63,7 +63,7 @@ func (name TypeName) String() string {
 		return "error"
 	case TypeCome:
 		return "come"
-	case TypeAgentStatus:
+	case TypeAgentInfo:
 		return "agent_status"
 	case TypeFoo:
 		return "foo"
