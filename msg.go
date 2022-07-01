@@ -8,6 +8,7 @@ type Msg struct {
 	Plugin    *PluginInfo `json:"plugin,omitempty"` // 所需调用的插件信息
 	ErrorMsg  string      `json:"errmsg,omitempty"` // 错误消息的详情
 	// ctrl
+	AgentInfo *AgentInfo        `json:"ai,omitempty"`        // agent状态上报
 	Come      *ComePayload      `json:"come,omitempty"`      // 握手请求
 	Handshake *HandshakePayload `json:"handshake,omitempty"` // 握手返回结果
 	// exec plugin

@@ -9,6 +9,8 @@ const (
 	TypeHandshake                     // 2：握手消息，服务端返回
 )
 
+const TypeAgentInfo TypeName = iota + 7 // 7: agent状态上报
+
 const (
 	TypeFoo TypeName = iota + 8 // 8: foo消息
 	TypeBar                     // 9: bar消息
@@ -61,6 +63,8 @@ func (name TypeName) String() string {
 		return "error"
 	case TypeCome:
 		return "come"
+	case TypeAgentStatus:
+		return "agent_status"
 	case TypeFoo:
 		return "foo"
 	case TypeBar:
