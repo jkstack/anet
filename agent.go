@@ -3,8 +3,8 @@ package anet
 type AgentInfo struct {
 	Version          string             `json:"v"`   // 版本号
 	GoVersion        string             `json:"gv"`  // go版本号
-	CpuUsage         int                `json:"cu"`  // cpu使用率（百分比）
-	MemoryUsage      int                `json:"mu"`  // 内存使用率（百分比）
+	CpuUsage         float32            `json:"cu"`  // cpu使用率（百分比）
+	MemoryUsage      float32            `json:"mu"`  // 内存使用率（百分比）
 	Threads          int                `json:"ts"`  // 线程数
 	Routines         int                `json:"rs"`  // 协程数
 	Startup          int64              `json:"st"`  // 启动时间戳
