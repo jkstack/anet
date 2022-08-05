@@ -16,6 +16,7 @@ type AgentInfo struct {
 	OutBytes         uint64             `json:"ob"`  // 发送数据字节数
 	PluginExecd      uint64             `json:"pe"`  // 已运行插件数
 	PluginRunning    uint64             `json:"pr"`  // 正在运行插件数量
+	ReconnectCount   int                `json:"rcc"` // 重连次数
 	PluginUseCount   map[string]uint64  `json:"puc"` // 每个插件使用次数
 	PluginOutPackets map[string]uint64  `json:"pop"` // 每个插件发送数据包数量
 	PluginOutBytes   map[string]uint64  `json:"pob"` // 每个插件发送字节数
