@@ -39,8 +39,10 @@ const (
 
 // host.monitor
 const (
-	TypeHMStaticReq TypeName = iota + 30 // 30：获取主机信息请求
-	TypeHMStaticRep                      // 31：主机信息返回内容
+	TypeHMStaticReq  TypeName = iota + 30 // 30: 获取主机信息请求
+	TypeHMStaticRep                       // 31: 主机信息返回内容
+	TypeHMDynamicReq                      // 32: 获取动态数据
+	TypeHMDynamicRep                      // 33: 返回动态数据
 )
 
 // install
@@ -99,6 +101,10 @@ func (name TypeName) String() string {
 		return "hm_static_req"
 	case TypeHMStaticRep:
 		return "hm_static_rep"
+	case TypeHMDynamicReq:
+		return "hm_dynamic_req"
+	case TypeHMDynamicRep:
+		return "hm_dynamic_rep"
 	case TypeLoggingConfig:
 		return "logging_config"
 	case TypeLoggingStatusReq:

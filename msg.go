@@ -27,7 +27,9 @@ type Msg struct {
 	DownloadData  *DownloadData  `json:"download_data,omitempty"`  // 文件内容
 	DownloadError *DownloadError `json:"download_error,omitempty"` // 文件读取时的报错信息
 	// host.monitor
-	HMStatic *HMStaticPayload `json:"hm_static,omitempty"` // 主机信息返回结果
+	HMStatic     *HMStaticPayload `json:"hm_static,omitempty"`      // 主机信息返回结果
+	HMDynamicReq *HMDynamicReq    `json:"hm_dynamic_req,omitempty"` // 动态数据请求
+	HMDynamicRep *HMDynamicRep    `json:"hm_dynamic_rep,omitempty"` // 动态数据响应
 	// install
 	InstallArgs *InstallArgs `json:"inst_args,omitempty"` // 安装请求参数
 	InstallRep  *InstallRep  `json:"inst_rep,omitempty"`  // 安装结果
