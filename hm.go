@@ -3,11 +3,12 @@ package anet
 import "time"
 
 type HMCore struct {
-	Processor int32  `json:"processor,omitempty"` // 第几个核心
-	Model     string `json:"model,omitempty"`     // Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
-	Core      int32  `json:"core,omitempty"`      // 所在物理核上的编号
-	Cores     int32  `json:"cores,omitempty"`     // 某块CPU上的编号
-	Physical  int32  `json:"physical,omitempty"`  // 物理CPU编号
+	Processor int32   `json:"processor,omitempty"` // 第几个核心
+	Model     string  `json:"model,omitempty"`     // Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
+	Core      int32   `json:"core,omitempty"`      // 所在物理核上的编号
+	Cores     int32   `json:"cores,omitempty"`     // 某块CPU上的编号
+	Physical  int32   `json:"physical,omitempty"`  // 物理CPU编号
+	Mhz       float64 `json:"mhz,omitempty"`       // CPU频率
 }
 
 type HMPhysicalDisk struct {
