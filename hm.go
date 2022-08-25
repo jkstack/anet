@@ -12,33 +12,33 @@ type HMCore struct {
 }
 
 type HMDisk struct {
-	Model      string   `json:"model"` // 品牌型号
-	Total      uint64   `json:"total"` // 容量
-	Type       string   `json:"type"`  // hdd,fdd,odd
-	Partitions []string `json:"parts"` // 逻辑分区
+	Model      string   `json:"model,omitempty"` // 品牌型号
+	Total      uint64   `json:"total,omitempty"` // 容量
+	Type       string   `json:"type,omitempty"`  // hdd,fdd,odd
+	Partitions []string `json:"parts,omitempty"` // 逻辑分区
 }
 
 type HMPartition struct {
-	Name   string   `json:"name"`             // linux为挂载路径如/run，windows为盘符如C:
+	Name   string   `json:"name,omitempty"`   // linux为挂载路径如/run，windows为盘符如C:
 	FSType string   `json:"fstype,omitempty"` // NTFS
-	Opts   []string `json:"opts"`             // rw,nosuid,nodev
-	Total  uint64   `json:"total"`            // 总容量
-	INodes uint64   `json:"inodes"`           // inode数量
+	Opts   []string `json:"opts,omitempty"`   // rw,nosuid,nodev
+	Total  uint64   `json:"total,omitempty"`  // 总容量
+	INodes uint64   `json:"inodes,omitempty"` // inode数量
 }
 
 type HMInterface struct {
 	Index   int      `json:"index,omitempty"` // 网卡下标
 	Name    string   `json:"name,omitempty"`  // 网卡名称
 	Mtu     int      `json:"mtu,omitempty"`   // 网卡mtu
-	Flags   []string `json:"flags"`           // 网卡附加参数
+	Flags   []string `json:"flags,omitempty"` // 网卡附加参数
 	Mac     string   `json:"mac,omitempty"`   // 网卡mac地址
-	Address []string `json:"addrs"`           // 网卡上绑定的IP地址列表
+	Address []string `json:"addrs,omitempty"` // 网卡上绑定的IP地址列表
 }
 
 type HMUser struct {
-	Name string `json:"name"` // 用户名
-	ID   string `json:"id"`   // 用户ID
-	GID  string `json:"gid"`  // 用户组ID
+	Name string `json:"name,omitempty"` // 用户名
+	ID   string `json:"id,omitempty"`   // 用户ID
+	GID  string `json:"gid,omitempty"`  // 用户组ID
 }
 
 type HMStaticPayload struct {
@@ -57,30 +57,29 @@ type HMStaticPayload struct {
 	Kernel struct {
 		Version string `json:"version,omitempty"` // 3.10.0-1062.el7.x86_64
 		Arch    string `json:"arch,omitempty"`    // amd64、i386
-	} `json:"kernel"`
+	} `json:"kernel,omitempty"`
 	CPU struct {
 		Physical int      `json:"physical,omitempty"` // 物理核心数
 		Logical  int      `json:"logical,omitempty"`  // 逻辑核心数
-		Cores    []HMCore `json:"cores"`              // 每个核心的参数
-	} `json:"cpu"`
+		Cores    []HMCore `json:"cores,omitempty"`    // 每个核心的参数
+	} `json:"cpu,omitempty"`
 	Memory struct {
 		Physical uint64 `json:"physical,omitempty"` // 物理内存大小
 		Swap     uint64 `json:"swap,omitempty"`     // swap内存大小
-	} `json:"memory"`
-	Disks      []HMDisk      `json:"disks"`             // 物理磁盘列表
-	Partitions []HMPartition `json:"parts"`             // 逻辑分区列表
-	GateWay    string        `json:"gateway,omitempty"` // 网关地址
-	Interface  []HMInterface `json:"interface"`         // 网卡列表
-	User       []HMUser      `json:"user"`              // 用户列表
+	} `json:"memory,omitempty"`
+	Disks      []HMDisk      `json:"disks,omitempty"`     // 物理磁盘列表
+	Partitions []HMPartition `json:"parts,omitempty"`     // 逻辑分区列表
+	GateWay    string        `json:"gateway,omitempty"`   // 网关地址
+	Interface  []HMInterface `json:"interface,omitempty"` // 网卡列表
+	User       []HMUser      `json:"user,omitempty"`      // 用户列表
 }
 
 type hmDynamicReqType int
 
 const (
-	HMReqCPU hmDynamicReqType = iota
-	HMReqMemory
-	HMReqDisk
+	HMReqUsage hmDynamicReqType = iota
 	HMReqProcess
+	HMReqConnections
 )
 
 type HMDynamicReq struct {
@@ -88,45 +87,62 @@ type HMDynamicReq struct {
 }
 
 type HMDynamicRep struct {
-	CPU     *HMDynamicCPU      `json:"cpu,omitempty"`     // CPU
-	Memory  *HMDynamicMemory   `json:"mem,omitempty"`     // 内存
-	Disk    []HMDynamicDisk    `json:"disk,omitempty"`    // 磁盘
-	Process []HMDynamicProcess `json:"process,omitempty"` // 进程
+	Usage       *HMDynamicUsage       `json:"usage,omitempty"`   // CPU
+	Process     []HMDynamicProcess    `json:"process,omitempty"` // 进程
+	Connections []HMDynamicConnection `json:"conns,omitempty"`   // 连接
 }
 
-type HMDynamicCPU struct {
-	Usage float64 `json:"usage"` // CPU使用率
+type HMDynamicUsage struct {
+	Cpu struct {
+		Usage float64 `json:"usage,omitempty"` // CPU使用率
+	} `json:"cpu"`
+	Memory struct {
+		Used      uint64  `json:"used,omitempty"`      // 已使用字节数
+		Free      uint64  `json:"free,omitempty"`      // 剩余字节数
+		Available uint64  `json:"available,omitempty"` // 可用字节数
+		Total     uint64  `json:"total,omitempty"`     // 总字节数
+		Usage     float64 `json:"usage,omitempty"`     // 内存使用率
+		SwapUsed  uint64  `json:"sused,omitempty"`     // swap已使用字节数
+		SwapFree  uint64  `json:"sfree,omitempty"`     // swap剩余字节数
+		SwapTotal uint64  `json:"stotal,omitempty"`    // swap总字节数
+	} `json:"mem"`
+	Partitions []HMDynamicPartition `json:"parts,omitempty"`      // 分区
+	Interface  []HMDynamicInterface `json:"intferface,omitempty"` // 网卡
 }
 
-type HMDynamicMemory struct {
-	Used      uint64  `json:"used"`      // 已使用字节数
-	Free      uint64  `json:"free"`      // 剩余字节数
-	Available uint64  `json:"available"` // 可用字节数
-	Total     uint64  `json:"total"`     // 总字节数
-	Usage     float64 `json:"usage"`     // 内存使用率
-	SwapUsed  uint64  `json:"sused"`     // swap已使用字节数
-	SwapFree  uint64  `json:"sfree"`     // swap剩余字节数
-	SwapTotal uint64  `json:"stotal"`    // swap总字节数
+type HMDynamicPartition struct {
+	Name  string  `json:"name,omitempty"`  // linux为挂载路径如/run，windows为盘符如C:
+	Used  uint64  `json:"used,omitempty"`  // 已使用字节数
+	Free  uint64  `json:"free,omitempty"`  // 剩余字节数
+	Usage float64 `json:"usage,omitempty"` // 磁盘使用率
 }
 
-type HMDynamicDisk struct {
-	Name  string  `json:"name,omitempty"` // linux为挂载路径如/run，windows为盘符如C:
-	Used  uint64  `json:"used"`           // 已使用字节数
-	Free  uint64  `json:"free"`           // 剩余字节数
-	Total uint64  `json:"total"`          // 总字节数
-	Usage float64 `json:"usage"`          // 内存使用率
+type HMDynamicInterface struct {
+	Name        string `json:"name,omitempty"`  // 网卡名称
+	BytesSent   uint64 `json:"bsent,omitempty"` // 发送字节数
+	BytesRecv   uint64 `json:"brecv,omitempty"` // 接收字节数
+	PacketsSent uint64 `json:"psent,omitempty"` // 发送数据包数量
+	PacketsRecv uint64 `json:"precv,omitempty"` // 接收数据包数量
+}
+
+type HMDynamicConnection struct {
+	Fd     uint32 `json:"fd,omitempty"`     // 句柄号
+	Type   string `json:"type,omitempty"`   // 连接类型
+	Local  string `json:"local,omitempty"`  // 本地地址
+	Remote string `json:"remote,omitempty"` // 远程地址
+	Status string `json:"status,omitempty"` // 连接状态
 }
 
 type HMDynamicProcess struct {
-	ID            int32    `json:"id"`               // 进程ID
-	ParentID      int32    `json:"pid"`              // 父进程ID
+	ID            int32    `json:"id,omitempty"`     // 进程ID
+	ParentID      int32    `json:"pid,omitempty"`    // 父进程ID
 	User          string   `json:"user,omitempty"`   // 用户
-	CpuUsage      float64  `json:"cpu"`              // CPU使用率
-	RssMemory     uint64   `json:"rss"`              // 物理内存数
-	VirtualMemory uint64   `json:"vms"`              // 虚拟内存数
-	SwapMemory    uint64   `json:"swap"`             // swap内存数
-	MemoryUsage   float64  `json:"mem"`              // 内存使用率
+	CpuUsage      float64  `json:"cpu,omitempty"`    // CPU使用率
+	RssMemory     uint64   `json:"rss,omitempty"`    // 物理内存数
+	VirtualMemory uint64   `json:"vms,omitempty"`    // 虚拟内存数
+	SwapMemory    uint64   `json:"swap,omitempty"`   // swap内存数
+	MemoryUsage   float64  `json:"mem,omitempty"`    // 内存使用率
 	Cmd           []string `json:"cmd,omitempty"`    // 命令行
 	Listen        []uint32 `json:"listen,omitempty"` // 监听端口
-	Connections   int      `json:"conns"`            // 连接数
+	Connections   int      `json:"conns,omitempty"`  // 连接数
 }
