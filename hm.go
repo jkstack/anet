@@ -65,9 +65,10 @@ type HMStaticPayload struct {
 		Physical uint64 `json:"physical,omitempty"` // 物理内存大小
 		Swap     uint64 `json:"swap,omitempty"`     // swap内存大小
 	} `json:"memory"`
-	Disks     []HMPhysicalDisk `json:"disks"`     // 磁盘列表
-	Interface []HMInterface    `json:"interface"` // 网卡列表
-	User      []HMUser         `json:"user"`      // 用户列表
+	Disks     []HMPhysicalDisk `json:"disks"`             // 磁盘列表
+	GateWay   string           `json:"gateway,omitempty"` // 网关地址
+	Interface []HMInterface    `json:"interface"`         // 网卡列表
+	User      []HMUser         `json:"user"`              // 用户列表
 }
 
 type hmDynamicReqType int
