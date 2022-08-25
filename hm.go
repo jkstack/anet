@@ -52,6 +52,7 @@ type HMStaticPayload struct {
 		PlatformName    string    `json:"pname,omitempty"`    // debian、centos
 		PlatformVersion string    `json:"pversion,omitempty"` // 7.7.1908
 		Install         time.Time `json:"install,omitempty"`  // 安装时间
+		Startup         time.Time `json:"startup,omitempty"`  // 启动时间
 	} `json:"os,omitempty"`
 	Kernel struct {
 		Version string `json:"version,omitempty"` // 3.10.0-1062.el7.x86_64
