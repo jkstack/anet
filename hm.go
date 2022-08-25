@@ -74,16 +74,16 @@ type HMStaticPayload struct {
 	User       []HMUser      `json:"user,omitempty"`      // 用户列表
 }
 
-type hmDynamicReqType int
+type HMDynamicReqType int
 
 const (
-	HMReqUsage hmDynamicReqType = iota
+	HMReqUsage HMDynamicReqType = iota
 	HMReqProcess
 	HMReqConnections
 )
 
 type HMDynamicReq struct {
-	Req []hmDynamicReqType `json:"req"` // 请求内容
+	Req []HMDynamicReqType `json:"req"` // 请求内容
 }
 
 type HMDynamicRep struct {
