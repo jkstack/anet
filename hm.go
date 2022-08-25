@@ -12,9 +12,9 @@ type HMCore struct {
 }
 
 type HMDisk struct {
-	Model string   `json:"model"` // 品牌型号
-	Total uint64   `json:"total"` // 容量
-	Disks []string `json:"disks"` // 逻辑分区
+	Model      string   `json:"model"` // 品牌型号
+	Total      uint64   `json:"total"` // 容量
+	Partitions []string `json:"parts"` // 逻辑分区
 }
 
 type HMPartition struct {
@@ -67,7 +67,7 @@ type HMStaticPayload struct {
 		Swap     uint64 `json:"swap,omitempty"`     // swap内存大小
 	} `json:"memory"`
 	Disks      []HMDisk      `json:"disks"`             // 物理磁盘列表
-	Partitions []HMPartition `json:"partitions"`        // 逻辑分区列表
+	Partitions []HMPartition `json:"parts"`             // 逻辑分区列表
 	GateWay    string        `json:"gateway,omitempty"` // 网关地址
 	Interface  []HMInterface `json:"interface"`         // 网卡列表
 	User       []HMUser      `json:"user"`              // 用户列表
