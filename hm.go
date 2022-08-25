@@ -11,13 +11,13 @@ type HMCore struct {
 	Mhz       float64 `json:"mhz,omitempty"`       // CPU频率
 }
 
-type HMPhysicalDisk struct {
-	Model string        `json:"model"` // 品牌型号
-	Total uint64        `json:"total"` // 容量
-	Disks []HMLogicDisk `json:"disks"` // 逻辑分区
+type HMDisk struct {
+	Model string   `json:"model"` // 品牌型号
+	Total uint64   `json:"total"` // 容量
+	Disks []string `json:"disks"` // 逻辑分区
 }
 
-type HMLogicDisk struct {
+type HMPartition struct {
 	Name   string   `json:"name"`             // linux为挂载路径如/run，windows为盘符如C:
 	FSType string   `json:"fstype,omitempty"` // NTFS
 	Opts   []string `json:"opts"`             // rw,nosuid,nodev
@@ -66,10 +66,11 @@ type HMStaticPayload struct {
 		Physical uint64 `json:"physical,omitempty"` // 物理内存大小
 		Swap     uint64 `json:"swap,omitempty"`     // swap内存大小
 	} `json:"memory"`
-	Disks     []HMPhysicalDisk `json:"disks"`             // 磁盘列表
-	GateWay   string           `json:"gateway,omitempty"` // 网关地址
-	Interface []HMInterface    `json:"interface"`         // 网卡列表
-	User      []HMUser         `json:"user"`              // 用户列表
+	PhysicalDisks []HMDisk      `json:"disks"`             // 物理磁盘列表
+	Partitions    []HMPartition `json:"partitions"`        // 逻辑分区列表
+	GateWay       string        `json:"gateway,omitempty"` // 网关地址
+	Interface     []HMInterface `json:"interface"`         // 网卡列表
+	User          []HMUser      `json:"user"`              // 用户列表
 }
 
 type hmDynamicReqType int
