@@ -14,6 +14,7 @@ type HMCore struct {
 type HMDisk struct {
 	Model      string   `json:"model"` // 品牌型号
 	Total      uint64   `json:"total"` // 容量
+	Type       string   `json:"type"`  // hdd,fdd,odd
 	Partitions []string `json:"parts"` // 逻辑分区
 }
 
