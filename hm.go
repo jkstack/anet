@@ -61,7 +61,6 @@ type HMStaticPayload struct {
 	CPU struct {
 		Physical int      `json:"physical,omitempty"` // 物理核心数
 		Logical  int      `json:"logical,omitempty"`  // 逻辑核心数
-		Socket   int      `json:"socket,omitempty"`   // CPU数量
 		Cores    []HMCore `json:"cores"`              // 每个核心的参数
 	} `json:"cpu"`
 	Memory struct {
