@@ -87,7 +87,8 @@ const (
 )
 
 type HMDynamicReq struct {
-	Req []HMDynamicReqType `json:"req"` // 请求内容
+	Req []HMDynamicReqType `json:"req"`           // 请求内容
+	Top int                `json:"top,omitempty"` // 返回进程列表数量限制
 }
 
 type HMDynamicRep struct {
