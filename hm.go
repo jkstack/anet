@@ -136,7 +136,7 @@ type HMDynamicInterface struct {
 
 type HMDynamicConnection struct {
 	Fd     uint32 `json:"fd,omitempty"`     // 句柄号
-	Pid    uint32 `json:"pid,omitempty"`    // 所属进程ID
+	Pid    int32  `json:"pid,omitempty"`    // 所属进程ID
 	Type   string `json:"type,omitempty"`   // 连接类型
 	Local  string `json:"local,omitempty"`  // 本地地址
 	Remote string `json:"remote,omitempty"` // 远程地址
