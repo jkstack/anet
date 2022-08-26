@@ -111,10 +111,13 @@ type HMDynamicUsage struct {
 }
 
 type HMDynamicPartition struct {
-	Name  string  `json:"name,omitempty"`  // linux为挂载路径如/run，windows为盘符如C:
-	Used  uint64  `json:"used,omitempty"`  // 已使用字节数
-	Free  uint64  `json:"free,omitempty"`  // 剩余字节数
-	Usage float64 `json:"usage,omitempty"` // 磁盘使用率
+	Name       string  `json:"name,omitempty"`   // linux为挂载路径如/run，windows为盘符如C:
+	Used       uint64  `json:"used,omitempty"`   // 已使用字节数
+	Free       uint64  `json:"free,omitempty"`   // 剩余字节数
+	Usage      float64 `json:"usage,omitempty"`  // 磁盘使用率
+	InodeUsed  uint64  `json:"iused,omitempty"`  // inode使用数量
+	InodeFree  uint64  `json:"ifree,omitempty"`  // inode剩余数量
+	InodeUsage float64 `json:"iusage,omitempty"` // inode使用率
 }
 
 type HMDynamicInterface struct {
