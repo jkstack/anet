@@ -1,14 +1,18 @@
 package anet
 
-import "time"
+import (
+	"time"
+
+	"github.com/jkstack/jkframe/utils"
+)
 
 type HMCore struct {
-	Processor int32   `json:"processor,omitempty"` // 第几个核心
-	Model     string  `json:"model,omitempty"`     // Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
-	Core      int32   `json:"core,omitempty"`      // 所在物理核上的编号
-	Cores     int32   `json:"cores,omitempty"`     // 某块CPU上的编号
-	Physical  int32   `json:"physical,omitempty"`  // 物理CPU编号
-	Mhz       float64 `json:"mhz,omitempty"`       // CPU频率
+	Processor int32           `json:"processor,omitempty"` // 第几个核心
+	Model     string          `json:"model,omitempty"`     // Intel(R) Xeon(R) CPU E5-2620 v2 @ 2.10GHz
+	Core      int32           `json:"core,omitempty"`      // 所在物理核上的编号
+	Cores     int32           `json:"cores,omitempty"`     // 某块CPU上的编号
+	Physical  int32           `json:"physical,omitempty"`  // 物理CPU编号
+	Mhz       utils.Float64P2 `json:"mhz,omitempty"`       // CPU频率
 }
 
 type HMDisk struct {
@@ -94,30 +98,30 @@ type HMDynamicRep struct {
 
 type HMDynamicUsage struct {
 	Cpu struct {
-		Usage float64 `json:"usage,omitempty"` // CPU使用率
+		Usage utils.Float64P2 `json:"usage,omitempty"` // CPU使用率
 	} `json:"cpu"`
 	Memory struct {
-		Used      uint64  `json:"used,omitempty"`      // 已使用字节数
-		Free      uint64  `json:"free,omitempty"`      // 剩余字节数
-		Available uint64  `json:"available,omitempty"` // 可用字节数
-		Total     uint64  `json:"total,omitempty"`     // 总字节数
-		Usage     float64 `json:"usage,omitempty"`     // 内存使用率
-		SwapUsed  uint64  `json:"sused,omitempty"`     // swap已使用字节数
-		SwapFree  uint64  `json:"sfree,omitempty"`     // swap剩余字节数
-		SwapTotal uint64  `json:"stotal,omitempty"`    // swap总字节数
+		Used      uint64          `json:"used,omitempty"`      // 已使用字节数
+		Free      uint64          `json:"free,omitempty"`      // 剩余字节数
+		Available uint64          `json:"available,omitempty"` // 可用字节数
+		Total     uint64          `json:"total,omitempty"`     // 总字节数
+		Usage     utils.Float64P2 `json:"usage,omitempty"`     // 内存使用率
+		SwapUsed  uint64          `json:"sused,omitempty"`     // swap已使用字节数
+		SwapFree  uint64          `json:"sfree,omitempty"`     // swap剩余字节数
+		SwapTotal uint64          `json:"stotal,omitempty"`    // swap总字节数
 	} `json:"mem"`
 	Partitions []HMDynamicPartition `json:"parts,omitempty"`      // 分区
 	Interface  []HMDynamicInterface `json:"intferface,omitempty"` // 网卡
 }
 
 type HMDynamicPartition struct {
-	Name       string  `json:"name,omitempty"`   // linux为挂载路径如/run，windows为盘符如C:
-	Used       uint64  `json:"used,omitempty"`   // 已使用字节数
-	Free       uint64  `json:"free,omitempty"`   // 剩余字节数
-	Usage      float64 `json:"usage,omitempty"`  // 磁盘使用率
-	InodeUsed  uint64  `json:"iused,omitempty"`  // inode使用数量
-	InodeFree  uint64  `json:"ifree,omitempty"`  // inode剩余数量
-	InodeUsage float64 `json:"iusage,omitempty"` // inode使用率
+	Name       string          `json:"name,omitempty"`   // linux为挂载路径如/run，windows为盘符如C:
+	Used       uint64          `json:"used,omitempty"`   // 已使用字节数
+	Free       uint64          `json:"free,omitempty"`   // 剩余字节数
+	Usage      utils.Float64P2 `json:"usage,omitempty"`  // 磁盘使用率
+	InodeUsed  uint64          `json:"iused,omitempty"`  // inode使用数量
+	InodeFree  uint64          `json:"ifree,omitempty"`  // inode剩余数量
+	InodeUsage utils.Float64P2 `json:"iusage,omitempty"` // inode使用率
 }
 
 type HMDynamicInterface struct {
@@ -137,15 +141,15 @@ type HMDynamicConnection struct {
 }
 
 type HMDynamicProcess struct {
-	ID            int32    `json:"id,omitempty"`     // 进程ID
-	ParentID      int32    `json:"pid,omitempty"`    // 父进程ID
-	User          string   `json:"user,omitempty"`   // 用户
-	CpuUsage      float64  `json:"cpu,omitempty"`    // CPU使用率
-	RssMemory     uint64   `json:"rss,omitempty"`    // 物理内存数
-	VirtualMemory uint64   `json:"vms,omitempty"`    // 虚拟内存数
-	SwapMemory    uint64   `json:"swap,omitempty"`   // swap内存数
-	MemoryUsage   float64  `json:"mem,omitempty"`    // 内存使用率
-	Cmd           []string `json:"cmd,omitempty"`    // 命令行
-	Listen        []uint32 `json:"listen,omitempty"` // 监听端口
-	Connections   int      `json:"conns,omitempty"`  // 连接数
+	ID            int32           `json:"id,omitempty"`     // 进程ID
+	ParentID      int32           `json:"pid,omitempty"`    // 父进程ID
+	User          string          `json:"user,omitempty"`   // 用户
+	CpuUsage      utils.Float64P2 `json:"cpu,omitempty"`    // CPU使用率
+	RssMemory     uint64          `json:"rss,omitempty"`    // 物理内存数
+	VirtualMemory uint64          `json:"vms,omitempty"`    // 虚拟内存数
+	SwapMemory    uint64          `json:"swap,omitempty"`   // swap内存数
+	MemoryUsage   utils.Float64P2 `json:"mem,omitempty"`    // 内存使用率
+	Cmd           []string        `json:"cmd,omitempty"`    // 命令行
+	Listen        []uint32        `json:"listen,omitempty"` // 监听端口
+	Connections   int             `json:"conns,omitempty"`  // 连接数
 }
