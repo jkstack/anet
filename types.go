@@ -39,10 +39,13 @@ const (
 
 // host.monitor
 const (
-	TypeHMStaticReq  TypeName = iota + 30 // 30: 获取主机信息请求
-	TypeHMStaticRep                       // 31: 主机信息返回内容
-	TypeHMDynamicReq                      // 32: 获取动态数据
-	TypeHMDynamicRep                      // 33: 返回动态数据
+	TypeHMStaticReq           TypeName = iota + 30 // 30: 获取主机信息请求
+	TypeHMStaticRep                                // 31: 主机信息返回内容
+	TypeHMDynamicReq                               // 32: 获取动态数据
+	TypeHMDynamicRep                               // 33: 返回动态数据
+	TypeHMQueryCollect                             // 34: 获取自动采集状态(req)
+	TypeHMCollectStatus                            // 35: 返回自动采集状态(rep)
+	TypeHMChangeCollectStatus                      // 36: 切换自动采集状态
 )
 
 // install
@@ -105,6 +108,12 @@ func (name TypeName) String() string {
 		return "hm_dynamic_req"
 	case TypeHMDynamicRep:
 		return "hm_dynamic_rep"
+	case TypeHMQueryCollect:
+		return "hm_query_collect"
+	case TypeHMCollectStatus:
+		return "hm_collect_status"
+	case TypeHMChangeCollectStatus:
+		return "hm_change_collect_status"
 	case TypeLoggingConfig:
 		return "logging_config"
 	case TypeLoggingStatusReq:

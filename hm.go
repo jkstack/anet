@@ -156,3 +156,17 @@ type HMDynamicProcess struct {
 	Listen        []uint32        `json:"listen,omitempty"` // 监听端口
 	Connections   int             `json:"conns,omitempty"`  // 连接数
 }
+
+type HMJob struct {
+	Name     string        `json:"name,omitempty"`     // 任务名
+	Interval time.Duration `json:"interval,omitempty"` // 间隔时间
+}
+
+type HMReportPayload struct {
+	Jobs       []HMJob  `json:"jobs,omitempty"`   // 当前正在执行的任务列表
+	ConnsAllow []string `json:"aconns,omitempty"` // 允许采集的连接类型
+}
+
+type HMChangeReportStatus struct {
+	Jobs []string `json:"jobs,omitempty"` // 允许执行的任务列表
+}
