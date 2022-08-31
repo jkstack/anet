@@ -162,7 +162,7 @@ type HMJob struct {
 	Interval time.Duration `json:"interval,omitempty"` // 间隔时间
 }
 
-type HMReportPayload struct {
+type HMReportStatusPayload struct {
 	Jobs       []HMJob  `json:"jobs,omitempty"`   // 当前正在执行的任务列表
 	ConnsAllow []string `json:"aconns,omitempty"` // 允许采集的连接类型
 }
