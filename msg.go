@@ -32,6 +32,7 @@ type Msg struct {
 	HMDynamicRep    *HMDynamicRep          `json:"hm_dynamic_rep,omitempty"`   // 动态数据响应
 	HMCollectStatus *HMReportStatusPayload `json:"hm_status_rep,omitempty"`    // 自动采集状态返回
 	HMChangeStatus  *HMChangeReportStatus  `json:"hm_change_status,omitempty"` // 修改自动采集状态
+	HMAgentStatus   *HMAgentStatus         `json:"hm_agent_status,omitempty"`  // metrics-agent状态上报
 	// install
 	InstallArgs *InstallArgs `json:"inst_args,omitempty"` // 安装请求参数
 	InstallRep  *InstallRep  `json:"inst_rep,omitempty"`  // 安装结果

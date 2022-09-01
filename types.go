@@ -46,6 +46,7 @@ const (
 	TypeHMQueryCollect                             // 34: 获取自动采集状态(req)
 	TypeHMCollectStatus                            // 35: 返回自动采集状态(rep)
 	TypeHMChangeCollectStatus                      // 36: 切换自动采集状态
+	TypeHMReportAgentStatus                        // 37: agent状态上报数据
 )
 
 // install
@@ -114,6 +115,8 @@ func (name TypeName) String() string {
 		return "hm_collect_status"
 	case TypeHMChangeCollectStatus:
 		return "hm_change_collect_status"
+	case TypeHMReportAgentStatus:
+		return "hm_report_agent_status"
 	case TypeLoggingConfig:
 		return "logging_config"
 	case TypeLoggingStatusReq:
