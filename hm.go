@@ -175,5 +175,5 @@ type HMAgentStatus struct {
 	Jobs        []string          `json:"jobs,omitempty"` // 正在执行的自动采集任务列表
 	Warnings    uint64            `json:"warns"`          // 获取数据失败次数
 	ReportBytes map[string]uint64 `json:"rbs,omitempty"`  // 每一种任务数据上报总字节数
-	ReportCount map[string]int    `json:"rcs,omitempty"`  // 每一种任务数据上报次数
+	ReportCount map[string]uint64 `json:"rcs,omitempty"`  // 每一种任务数据上报次数
 }
