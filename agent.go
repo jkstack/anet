@@ -20,4 +20,6 @@ type AgentInfo struct {
 	PluginUseCount   map[string]uint64  `json:"puc"` // 每个插件使用次数
 	PluginOutPackets map[string]uint64  `json:"pop"` // 每个插件发送数据包数量
 	PluginOutBytes   map[string]uint64  `json:"pob"` // 每个插件发送字节数
+	ReadChanSize     int                `json:"rcs"` // 接收队列长度
+	WriteChanSize    int                `json:"wcs"` // 发送队列长度
 }
