@@ -106,11 +106,9 @@ type HMDynamicUsage struct {
 		Used      uint64          `json:"used,omitempty"`      // 已使用字节数
 		Free      uint64          `json:"free,omitempty"`      // 剩余字节数
 		Available uint64          `json:"available,omitempty"` // 可用字节数
-		Total     uint64          `json:"total,omitempty"`     // 总字节数
 		Usage     utils.Float64P2 `json:"usage,omitempty"`     // 内存使用率
 		SwapUsed  uint64          `json:"sused,omitempty"`     // swap已使用字节数
 		SwapFree  uint64          `json:"sfree,omitempty"`     // swap剩余字节数
-		SwapTotal uint64          `json:"stotal,omitempty"`    // swap总字节数
 	} `json:"mem"`
 	Partitions []HMDynamicPartition `json:"parts,omitempty"`      // 分区
 	Interface  []HMDynamicInterface `json:"intferface,omitempty"` // 网卡
