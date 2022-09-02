@@ -93,6 +93,7 @@ type HMDynamicReq struct {
 }
 
 type HMDynamicRep struct {
+	Time        time.Time             `json:"time"`              // 上报时间
 	Usage       *HMDynamicUsage       `json:"usage,omitempty"`   // CPU
 	Process     []HMDynamicProcess    `json:"process,omitempty"` // 进程
 	Connections []HMDynamicConnection `json:"conns,omitempty"`   // 连接
