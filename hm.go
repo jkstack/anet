@@ -171,9 +171,14 @@ type HMChangeReportStatus struct {
 	Jobs []string `json:"jobs,omitempty"` // 允许执行的任务列表
 }
 
+type HMAgentJob struct {
+	Name      string `json:"name"` // 任务名称
+	Interval  uint64 `json:"i"`    // 间隔时间
+	BytesSent uint64 `json:"bs"`   // 已发送字节数
+	Count     uint64 `json:"ct"`   // 上报次数
+}
+
 type HMAgentStatus struct {
-	Jobs        []string          `json:"jobs,omitempty"` // 正在执行的自动采集任务列表
-	Warnings    uint64            `json:"warns"`          // 获取数据失败次数
-	ReportBytes map[string]uint64 `json:"rbs,omitempty"`  // 每一种任务数据上报总字节数
-	ReportCount map[string]uint64 `json:"rcs,omitempty"`  // 每一种任务数据上报次数
+	Jobs     []HMAgentJob `json:"jobs,omitempty"` // 正在执行的自动采集任务列表
+	Warnings uint64       `json:"warns"`          // 获取数据失败次数
 }
