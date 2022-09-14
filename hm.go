@@ -84,6 +84,7 @@ const (
 	HMReqUsage HMDynamicReqType = iota
 	HMReqProcess
 	HMReqConnections
+	HMReqSensorsTemperatures
 )
 
 type HMDynamicReq struct {
@@ -93,11 +94,12 @@ type HMDynamicReq struct {
 }
 
 type HMDynamicRep struct {
-	Begin       time.Time             `json:"begin"`             // 开始采集时间
-	End         time.Time             `json:"end"`               // 采集完成时间
-	Usage       *HMDynamicUsage       `json:"usage,omitempty"`   // CPU
-	Process     []HMDynamicProcess    `json:"process,omitempty"` // 进程
-	Connections []HMDynamicConnection `json:"conns,omitempty"`   // 连接
+	Begin               time.Time             `json:"begin"`             // 开始采集时间
+	End                 time.Time             `json:"end"`               // 采集完成时间
+	Usage               *HMDynamicUsage       `json:"usage,omitempty"`   // CPU
+	Process             []HMDynamicProcess    `json:"process,omitempty"` // 进程
+	Connections         []HMDynamicConnection `json:"conns,omitempty"`   // 连接
+	SensorsTemperatures []HMSensorTemperature `json:"temps,omitempty"`   // 传感器温度
 }
 
 type HMDynamicUsage struct {
@@ -155,6 +157,11 @@ type HMDynamicProcess struct {
 	Cmd           []string        `json:"cmd,omitempty"`    // 命令行
 	Listen        []uint32        `json:"listen,omitempty"` // 监听端口
 	Connections   int             `json:"conns,omitempty"`  // 连接数
+}
+
+type HMSensorTemperature struct {
+	Name        string          `json:"name,omitempty"` // 名称
+	Temperature utils.Float64P2 `json:"temp,omitempty"` // 温度
 }
 
 type HMJob struct {
