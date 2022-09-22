@@ -1,5 +1,7 @@
 package anet
 
+import "time"
+
 // ExecPayload exec payload
 type ExecPayload struct {
 	Cmd     string   `json:"cmd"`               // 命令路径
@@ -15,9 +17,10 @@ type ExecPayload struct {
 
 // ExecdPayload execd payload
 type ExecdPayload struct {
-	OK  bool   `json:"ok"`            // 是否启动成功
-	Msg string `json:"msg,omitempty"` // 启动失败时的详情
-	Pid int    `json:"pid"`           // 进程id
+	OK   bool      `json:"ok"`            // 是否启动成功
+	Msg  string    `json:"msg,omitempty"` // 启动失败时的详情
+	Pid  int       `json:"pid"`           // 进程id
+	Time time.Time `json:"t"`             // 启动时间
 }
 
 // ExecData exec data
@@ -27,7 +30,8 @@ type ExecData struct {
 
 // ExecDone exec done
 type ExecDone struct {
-	Code int `json:"code"` // 退出时的返回码
+	Code int       `json:"code"` // 退出时的返回码
+	Time time.Time `json:"t"`    // 结束时间
 }
 
 // ExecKill exec kill
