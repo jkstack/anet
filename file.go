@@ -20,6 +20,7 @@ type FileInfo struct {
 	Size    uint64      `json:"size"`     // 文件大小
 	ModTime time.Time   `json:"mod_time"` // 文件修改时间
 	IsLink  bool        `json:"is_link"`  // 是否是软链接
+	LinkDir string      `json:"link_dir"` // 连接路径
 }
 
 // LsRep ls response
