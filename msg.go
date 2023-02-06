@@ -8,9 +8,13 @@ type Msg struct {
 	Plugin    *PluginInfo `json:"plugin,omitempty"` // 所需调用的插件信息
 	ErrorMsg  string      `json:"errmsg,omitempty"` // 错误消息的详情
 	// ctrl
-	AgentInfo *AgentInfo        `json:"ai,omitempty"`        // agent状态上报
-	Come      *ComePayload      `json:"come,omitempty"`      // 握手请求
-	Handshake *HandshakePayload `json:"handshake,omitempty"` // 握手返回结果
+	AgentInfo       *AgentInfo        `json:"ai,omitempty"`        // agent状态上报
+	Come            *ComePayload      `json:"come,omitempty"`      // 握手请求
+	Handshake       *HandshakePayload `json:"handshake,omitempty"` // 握手返回结果
+	LsLog           *LsLogPayload     `json:"ls_log,omitempty"`    // 查询log文件结果
+	LogDownload     *LogDownloadReq   `json:"log_dreq,omitempty"`  // 下载log文件
+	LogDownloadInfo *LogDownloadInfo  `json:"log_dinfo,omitempty"` // 下载log文件信息
+	LogDownloadData *LogDownloadData  `json:"log_ddata,omitempty"` // 下载log文件内容
 	// exec plugin
 	Exec     *ExecPayload  `json:"exec,omitempty"`      // 执行命令消息参数
 	Execd    *ExecdPayload `json:"execd,omitempty"`     // 执行命令脚本或命令的启动结果，包括pid等

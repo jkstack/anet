@@ -1,7 +1,9 @@
 package anet
 
 import (
+	"crypto/md5"
 	"net"
+	"time"
 )
 
 // ComePayload handshake request
@@ -28,4 +30,36 @@ type HandshakePayload struct {
 	ID       string   `json:"id"`                 // 被分配的agent id
 	Msg      string   `json:"msg"`                // 错误信息
 	Redirect []string `json:"redirect,omitempty"` // 重定向地址
+}
+
+// LogFile log file info
+type LogFile struct {
+	Name    string    `json:"name"` // 文件名
+	Size    uint64    `json:"size"` // 文件大小
+	ModTime time.Time `json:"mod"`  // 修改时间
+}
+
+// LsLogPayload ls log response
+type LsLogPayload struct {
+	Files []LogFile `json:"files"` // 文件列表
+}
+
+// LogDownloadReq download log request
+type LogDownloadReq struct {
+	Files []string `json:"files"` // 请求文件列表
+}
+
+// LogDownloadInfo download file info
+type LogDownloadInfo struct {
+	OK        bool           `json:"ok"`            // 是否成功
+	ErrMsg    string         `json:"msg,omitempty"` // 错误信息
+	Size      uint64         `json:"size"`          // 文件大小
+	BlockSize uint64         `json:"block_size"`    // 分块大小
+	MD5       [md5.Size]byte `json:"md5"`           // 文件md5
+}
+
+// LogDownloadData download file data
+type LogDownloadData struct {
+	Offset uint64 `json:"offset"` // 块偏移量
+	Data   string `json:"data"`   // 块内容
 }

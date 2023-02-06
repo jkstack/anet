@@ -63,6 +63,15 @@ const (
 	TypeLoggingReport
 )
 
+// agent log
+const (
+	TypeLogLsReq        TypeName = iota + 10000 // 10000：查询log文件列表
+	TypeLogLsRep                                // 10001: 返回log文件列表
+	TypeLogDownloadReq                          // 10002：请求log文件
+	TypeLogDownloadInfo                         // 10003：返回log文件详情
+	TypeLogDownloadData                         // 10004: 返回log文件内容
+)
+
 func (name TypeName) String() string {
 	switch name {
 	case TypeError:
@@ -125,6 +134,16 @@ func (name TypeName) String() string {
 		return "logging_status_rep"
 	case TypeLoggingReport:
 		return "logging_report"
+	case TypeLogLsReq:
+		return "request_log_files"
+	case TypeLogLsRep:
+		return "response_log_files"
+	case TypeLogDownloadReq:
+		return "download_log_files"
+	case TypeLogDownloadInfo:
+		return "download_log_info"
+	case TypeLogDownloadData:
+		return "download_log_data"
 	default:
 		return "unset"
 	}
