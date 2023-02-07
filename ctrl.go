@@ -51,11 +51,11 @@ type LogDownloadReq struct {
 
 // LogDownloadInfo download file info
 type LogDownloadInfo struct {
-	OK        bool           `json:"ok"`            // 是否成功
-	ErrMsg    string         `json:"msg,omitempty"` // 错误信息
-	Size      uint64         `json:"size"`          // 文件大小
-	BlockSize uint64         `json:"block_size"`    // 分块大小
-	MD5       [md5.Size]byte `json:"md5"`           // 文件md5
+	OK        bool           `json:"ok"`                   // 是否成功
+	ErrMsg    string         `json:"msg,omitempty"`        // 错误信息
+	Size      uint64         `json:"size,omitempty"`       // 文件大小
+	BlockSize uint64         `json:"block_size,omitempty"` // 分块大小
+	MD5       [md5.Size]byte `json:"md5,omitempty"`        // 文件md5
 }
 
 // LogDownloadData download file data
