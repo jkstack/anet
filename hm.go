@@ -105,7 +105,10 @@ type HMDynamicRep struct {
 
 type HMDynamicUsage struct {
 	Cpu struct {
-		Usage utils.Float64P2 `json:"usage,omitempty"` // CPU使用率
+		Usage  utils.Float64P2 `json:"usage,omitempty"`  // CPU使用率
+		Load1  utils.Float64P2 `json:"load1,omitempty"`  // 1分钟负载
+		Load5  utils.Float64P2 `json:"load5,omitempty"`  // 5分钟负载
+		Load15 utils.Float64P2 `json:"load15,omitempty"` // 15分钟负载
 	} `json:"cpu"`
 	Memory struct {
 		Used      uint64          `json:"used,omitempty"`      // 已使用字节数
@@ -120,13 +123,16 @@ type HMDynamicUsage struct {
 }
 
 type HMDynamicPartition struct {
-	Name       string          `json:"name,omitempty"`   // linux为挂载路径如/run，windows为盘符如C:
-	Used       uint64          `json:"used,omitempty"`   // 已使用字节数
-	Free       uint64          `json:"free,omitempty"`   // 剩余字节数
-	Usage      utils.Float64P2 `json:"usage,omitempty"`  // 磁盘使用率
-	InodeUsed  uint64          `json:"iused,omitempty"`  // inode使用数量
-	InodeFree  uint64          `json:"ifree,omitempty"`  // inode剩余数量
-	InodeUsage utils.Float64P2 `json:"iusage,omitempty"` // inode使用率
+	Name           string          `json:"name,omitempty"`   // linux为挂载路径如/run，windows为盘符如C:
+	Used           uint64          `json:"used,omitempty"`   // 已使用字节数
+	Free           uint64          `json:"free,omitempty"`   // 剩余字节数
+	Usage          utils.Float64P2 `json:"usage,omitempty"`  // 磁盘使用率
+	InodeUsed      uint64          `json:"iused,omitempty"`  // inode使用数量
+	InodeFree      uint64          `json:"ifree,omitempty"`  // inode剩余数量
+	InodeUsage     utils.Float64P2 `json:"iusage,omitempty"` // inode使用率
+	ReadPreSecond  uint64          `json:"rps,omitempty"`    // 每秒读取字节数
+	WritePreSecond uint64          `json:"wps,omitempty"`    // 每秒写入字节数
+	IopsInProgress uint64          `json:"iip,omitempty"`    // iops
 }
 
 type HMDynamicInterface struct {
