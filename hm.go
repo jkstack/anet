@@ -130,8 +130,8 @@ type HMDynamicPartition struct {
 	InodeUsed      uint64          `json:"iused,omitempty"`  // inode使用数量
 	InodeFree      uint64          `json:"ifree,omitempty"`  // inode剩余数量
 	InodeUsage     utils.Float64P2 `json:"iusage,omitempty"` // inode使用率
-	ReadPreSecond  uint64          `json:"rps,omitempty"`    // 每秒读取字节数
-	WritePreSecond uint64          `json:"wps,omitempty"`    // 每秒写入字节数
+	ReadPreSecond  utils.Float64P2 `json:"rps,omitempty"`    // 每秒读取字节数
+	WritePreSecond utils.Float64P2 `json:"wps,omitempty"`    // 每秒写入字节数
 	IopsInProgress uint64          `json:"iip,omitempty"`    // iops
 }
 
