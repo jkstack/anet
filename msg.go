@@ -45,4 +45,9 @@ type Msg struct {
 	LoggingStatusReq *LoggingStatusReq `json:"logging_req,omitempty"`    // 切换状态请求
 	LoggingStatusRep *LoggingStatusRep `json:"logging_rep,omitempty"`    // 切换状态结果
 	LoggingReport    *LoggingReport    `json:"logging_report,omitempty"` // 状态上报
+	// rpa
+	RPARun     *RPARunArgs `json:"rpa_run,omitempty"`      // RPA运行参数
+	RPALog     *RPALogData `json:"rpa_log,omitempty"`      // RPA日志上报
+	RPACtrlReq *RPACtrlReq `json:"rpa_ctrl_req,omitempty"` // RPA控制请求
+	RPACtrlRep *RPACtrlRep `json:"rpa_ctrl_rep,omitempty"` // RPA控制结果
 }

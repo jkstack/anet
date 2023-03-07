@@ -63,6 +63,14 @@ const (
 	TypeLoggingReport
 )
 
+// rpa
+const (
+	TypeRPARun TypeName = iota + 60
+	TypeRPALog
+	TypeRPAControlReq
+	TypeRPAControlRep
+)
+
 // agent log
 const (
 	TypeLogLsReq        TypeName = iota + 10000 // 10000：查询log文件列表
@@ -144,6 +152,14 @@ func (name TypeName) String() string {
 		return "download_log_info"
 	case TypeLogDownloadData:
 		return "download_log_data"
+	case TypeRPARun:
+		return "rpa_run"
+	case TypeRPALog:
+		return "rpa_log"
+	case TypeRPAControlReq:
+		return "rpa_ctrl_req"
+	case TypeRPAControlRep:
+		return "rpa_ctrl_rep"
 	default:
 		return "unset"
 	}
