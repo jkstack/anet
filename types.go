@@ -69,6 +69,7 @@ const (
 	TypeRPALog
 	TypeRPAControlReq
 	TypeRPAControlRep
+	TypeRPAFinish
 )
 
 // agent log
@@ -160,6 +161,8 @@ func (name TypeName) String() string {
 		return "rpa_ctrl_req"
 	case TypeRPAControlRep:
 		return "rpa_ctrl_rep"
+	case TypeRPAFinish:
+		return "rpa_finish"
 	default:
 		return "unset"
 	}
