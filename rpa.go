@@ -18,6 +18,11 @@ type RPACtrlReq struct {
 }
 
 type RPACtrlRep struct {
-	OK  bool   `json:"ok,omitempty"` // 操作是否成功
-	Msg string `json:"msg"`          // 失败原因
+	OK  bool   `json:"ok,omitempty"`  // 操作是否成功
+	Msg string `json:"msg,omitempty"` // 失败原因
+}
+
+type RPAFinish struct {
+	Code int    `json:"code,omitempty"` // 状态码
+	Msg  string `json:"msg,omitempty"`  // 错误信息
 }

@@ -50,4 +50,5 @@ type Msg struct {
 	RPALog     *RPALogData `json:"rpa_log,omitempty"`      // RPA日志上报
 	RPACtrlReq *RPACtrlReq `json:"rpa_ctrl_req,omitempty"` // RPA控制请求
 	RPACtrlRep *RPACtrlRep `json:"rpa_ctrl_rep,omitempty"` // RPA控制结果
+	RPAFinish  *RPAFinish  `json:"rpa_finish,omitempty"`   // RPA运行结束
 }
