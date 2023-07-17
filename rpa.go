@@ -26,3 +26,15 @@ type RPAFinish struct {
 	Code int    `json:"code,omitempty"` // 状态码
 	Msg  string `json:"msg,omitempty"`  // 错误信息
 }
+
+type RPASelectorRep struct {
+	Code int    `json:"code,omitempty"` // 状态码
+	Msg  string `json:"msg,omitempty"`  // 错误信息
+}
+
+type RPASelectorResult struct {
+	Code    int    `json:"code,omitempty"`    // 状态码
+	Msg     string `json:"msg,omitempty"`     // 错误信息
+	Content string `json:"content,omitempty"` // xml内容
+	Image   string `json:"image,omitempty"`   // 图片
+}

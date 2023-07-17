@@ -72,6 +72,12 @@ const (
 	TypeRPAFinish
 )
 
+const (
+	TypeRPASelectorReq TypeName = iota + 70
+	TypeRPASelectorRep
+	TypeRPASelectorResult
+)
+
 // agent log
 const (
 	TypeLogLsReq        TypeName = iota + 10000 // 10000：查询log文件列表
@@ -163,6 +169,12 @@ func (name TypeName) String() string {
 		return "rpa_ctrl_rep"
 	case TypeRPAFinish:
 		return "rpa_finish"
+	case TypeRPASelectorReq:
+		return "rpa_selector_req"
+	case TypeRPASelectorRep:
+		return "rpa_selector_rep"
+	case TypeRPASelectorResult:
+		return "rpa_selector_result"
 	default:
 		return "unset"
 	}

@@ -46,9 +46,11 @@ type Msg struct {
 	LoggingStatusRep *LoggingStatusRep `json:"logging_rep,omitempty"`    // 切换状态结果
 	LoggingReport    *LoggingReport    `json:"logging_report,omitempty"` // 状态上报
 	// rpa
-	RPARun     *RPARunArgs `json:"rpa_run,omitempty"`      // RPA运行参数
-	RPALog     *RPALogData `json:"rpa_log,omitempty"`      // RPA日志上报
-	RPACtrlReq *RPACtrlReq `json:"rpa_ctrl_req,omitempty"` // RPA控制请求
-	RPACtrlRep *RPACtrlRep `json:"rpa_ctrl_rep,omitempty"` // RPA控制结果
-	RPAFinish  *RPAFinish  `json:"rpa_finish,omitempty"`   // RPA运行结束
+	RPARun            *RPARunArgs        `json:"rpa_run,omitempty"`             // RPA运行参数
+	RPALog            *RPALogData        `json:"rpa_log,omitempty"`             // RPA日志上报
+	RPACtrlReq        *RPACtrlReq        `json:"rpa_ctrl_req,omitempty"`        // RPA控制请求
+	RPACtrlRep        *RPACtrlRep        `json:"rpa_ctrl_rep,omitempty"`        // RPA控制结果
+	RPAFinish         *RPAFinish         `json:"rpa_finish,omitempty"`          // RPA运行结束
+	RPASelectorRep    *RPASelectorRep    `json:"rpa_selector_rep,omitempty"`    // RPA工具状态
+	RPASelectorResult *RPASelectorResult `json:"rpa_selector_result,omitempty"` // RPA工具结果
 }
