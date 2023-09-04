@@ -76,6 +76,8 @@ const (
 	TypeRPASelectorReq TypeName = iota + 70
 	TypeRPASelectorRep
 	TypeRPASelectorResult
+	TypeRPASelectorValidateReq
+	TypeRPASelectorValidateRep
 )
 
 // agent log
@@ -175,6 +177,10 @@ func (name TypeName) String() string {
 		return "rpa_selector_rep"
 	case TypeRPASelectorResult:
 		return "rpa_selector_result"
+	case TypeRPASelectorValidateReq:
+		return "rpa_selector_validate_req"
+	case TypeRPASelectorValidateRep:
+		return "rpa_selector_validate_rep"
 	default:
 		return "unset"
 	}

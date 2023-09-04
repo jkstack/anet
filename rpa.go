@@ -38,3 +38,12 @@ type RPASelectorResult struct {
 	Content string `json:"content,omitempty"` // xml内容
 	Image   string `json:"image,omitempty"`   // 图片
 }
+
+type RPASelectorValidateReq struct {
+	Content string `json:"content"` // xml内容
+}
+
+type RPASelectorValidateRep struct {
+	OK  bool   `json:"ok"`  // 是否成功
+	Msg string `json:"msg"` // 错误信息
+}
