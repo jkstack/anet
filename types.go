@@ -72,12 +72,21 @@ const (
 	TypeRPAFinish
 )
 
+// rpa-selector
 const (
 	TypeRPASelectorReq TypeName = iota + 70
 	TypeRPASelectorRep
 	TypeRPASelectorResult
 	TypeRPASelectorValidateReq
 	TypeRPASelectorValidateRep
+)
+
+// ipmi
+const (
+	TypeIPMIDeviceInfoReq TypeName = iota + 80
+	TypeIPMIDeviceInfoRep
+	TypeIPMISensorListReq
+	TypeIPMISensorListRep
 )
 
 // agent log
@@ -181,6 +190,14 @@ func (name TypeName) String() string {
 		return "rpa_selector_validate_req"
 	case TypeRPASelectorValidateRep:
 		return "rpa_selector_validate_rep"
+	case TypeIPMIDeviceInfoReq:
+		return "ipmi_device_info_req"
+	case TypeIPMIDeviceInfoRep:
+		return "ipmi_device_info_rep"
+	case TypeIPMISensorListReq:
+		return "ipmi_sensor_list_req"
+	case TypeIPMISensorListRep:
+		return "ipmi_sensor_list_rep"
 	default:
 		return "unset"
 	}

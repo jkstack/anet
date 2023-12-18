@@ -55,4 +55,7 @@ type Msg struct {
 	RPASelectorResult      *RPASelectorResult      `json:"rpa_selector_result,omitempty"`       // RPA工具结果
 	RPASelectorValidateReq *RPASelectorValidateReq `json:"rpa_selector_validate_req,omitempty"` // RPA工具校验请求
 	RPASelectorValidateRep *RPASelectorValidateRep `json:"rpa_selector_validate_rep,omitempty"` // RPA工具校验结果
+	// ipmi
+	IPMICommonReq  *IPMICommonRequest `json:"ipmi_common_req,omitempty"`  // IPMI通用请求
+	IPMIDeviceInfo *IPMIDeviceInfo    `json:"ipmi_device_info,omitempty"` // IPMI设备信息
 }
