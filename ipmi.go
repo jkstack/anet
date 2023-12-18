@@ -8,6 +8,8 @@ type IPMICommonRequest struct {
 }
 
 type IPMIDeviceInfo struct {
+	OK              bool   `json:"ok"`               // 是否成功
+	Msg             string `json:"msg,omitempty"`    // 错误信息
 	OEM             string `json:"oem"`              // 生产厂商
 	FirmwareVersion string `json:"firmware_version"` // 固件版本
 	IPMIVersion     string `json:"ipmi_version"`     // IPMI版本
@@ -41,4 +43,10 @@ type IPMISensorInfo struct {
 	Type     string       `json:"type"`             // 传感器类型
 	Discrete bool         `json:"discrete"`         // 是否是离散传感器
 	Values   *sensorValue `json:"values,omitempty"` // 传感器数值
+}
+
+type IPMISensorList struct {
+	OK   bool             `json:"ok"`            // 是否成功
+	Msg  string           `json:"msg,omitempty"` // 错误信息
+	List []IPMISensorInfo `json:"list"`          // 传感器列表
 }
