@@ -1,5 +1,7 @@
 package anet
 
+import "github.com/jkstack/jkframe/utils"
+
 type IPMICommonRequest struct {
 	Interface string `json:"interface"` // 连接方式：lan=v1.5, lanplus=v2.0, auto=lanplus first
 	Addr      string `json:"addr"`      // IPMI地址
@@ -23,14 +25,14 @@ type sensorUnitValue struct {
 }
 
 type IPMISensorCritical struct {
-	NonCritical    *float64 `json:"non_critical,omitempty"`    // 恢复数值
-	Critical       *float64 `json:"critical,omitempty"`        // 告警数值
-	NonRecoverable *float64 `json:"non_recoverable,omitempty"` // 严重告警数值
+	NonCritical    *utils.Float64P2 `json:"non_critical,omitempty"`    // 恢复数值
+	Critical       *utils.Float64P2 `json:"critical,omitempty"`        // 告警数值
+	NonRecoverable *utils.Float64P2 `json:"non_recoverable,omitempty"` // 严重告警数值
 }
 
 type IPMISensorValue struct {
 	Unit    sensorUnitValue     `json:"unit"`            // 当前传感器的单位信息
-	Current float64             `json:"current"`         // 当前数值
+	Current utils.Float64P2     `json:"current"`         // 当前数值
 	Lower   *IPMISensorCritical `json:"lower,omitempty"` // 最低告警数值
 	Upper   *IPMISensorCritical `json:"upper,omitempty"` // 最高告警数值
 }
