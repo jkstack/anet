@@ -22,27 +22,27 @@ type sensorUnitValue struct {
 	Mod     string `json:"mod,omitempty"` // 第二项单位
 }
 
-type sensorCritical struct {
+type IPMISensorCritical struct {
 	NonCritical    *float64 `json:"non_critical,omitempty"`    // 恢复数值
 	Critical       *float64 `json:"critical,omitempty"`        // 告警数值
 	NonRecoverable *float64 `json:"non_recoverable,omitempty"` // 严重告警数值
 }
 
-type sensorValue struct {
-	Unit    sensorUnitValue `json:"unit"`            // 当前传感器的单位信息
-	Current float64         `json:"current"`         // 当前数值
-	Lower   *sensorCritical `json:"lower,omitempty"` // 最低告警数值
-	Upper   *sensorCritical `json:"upper,omitempty"` // 最高告警数值
+type IPMISensorValue struct {
+	Unit    sensorUnitValue     `json:"unit"`            // 当前传感器的单位信息
+	Current float64             `json:"current"`         // 当前数值
+	Lower   *IPMISensorCritical `json:"lower,omitempty"` // 最低告警数值
+	Upper   *IPMISensorCritical `json:"upper,omitempty"` // 最高告警数值
 }
 
 type IPMISensorInfo struct {
-	ID       uint16       `json:"id"`               // 传感器序号
-	SensorID uint8        `json:"sensor_id"`        // 传感器ID
-	EntityID string       `json:"entity_id"`        // 实体ID
-	Name     string       `json:"name"`             // 传感器名称
-	Type     string       `json:"type"`             // 传感器类型
-	Discrete bool         `json:"discrete"`         // 是否是离散传感器
-	Values   *sensorValue `json:"values,omitempty"` // 传感器数值
+	ID       uint16           `json:"id"`               // 传感器序号
+	SensorID uint8            `json:"sensor_id"`        // 传感器ID
+	EntityID string           `json:"entity_id"`        // 实体ID
+	Name     string           `json:"name"`             // 传感器名称
+	Type     string           `json:"type"`             // 传感器类型
+	Discrete bool             `json:"discrete"`         // 是否是离散传感器
+	Values   *IPMISensorValue `json:"values,omitempty"` // 传感器数值
 }
 
 type IPMISensorList struct {
