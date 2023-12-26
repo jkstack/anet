@@ -25,6 +25,7 @@ type RPACtrlRep struct {
 type RPAFinish struct {
 	Code int    `json:"code,omitempty"` // 状态码
 	Msg  string `json:"msg,omitempty"`  // 错误信息
+	Data string `json:"data,omitempty"` // 返回内容
 }
 
 type RPASelectorRep struct {
