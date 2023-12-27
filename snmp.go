@@ -8,6 +8,7 @@ type SNMPReq struct {
 
 type SNMPItem struct {
 	OID   string `json:"oid"`   // snmp oid
+	Type  string `json:"type"`  // snmp type
 	Value string `json:"value"` // snmp value
 }
 
