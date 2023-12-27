@@ -59,4 +59,7 @@ type Msg struct {
 	IPMICommonReq  *IPMICommonRequest `json:"ipmi_common_req,omitempty"`  // IPMI通用请求
 	IPMIDeviceInfo *IPMIDeviceInfo    `json:"ipmi_device_info,omitempty"` // IPMI设备信息
 	IPMISensorList *IPMISensorList    `json:"ipmi_sensor_list,omitempty"` // IPMI传感器列表
+	// snmp
+	SNMPReq *SNMPReq `json:"snmp_req,omitempty"` // SNMP请求
+	SNMPRep *SNMPRep `json:"snmp_rep,omitempty"` // SNMP响应
 }

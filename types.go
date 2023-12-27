@@ -89,6 +89,12 @@ const (
 	TypeIPMISensorListRep
 )
 
+// snmp
+const (
+	TypeSNMPListReq TypeName = iota + 90
+	TypeSNMPListRep
+)
+
 // agent log
 const (
 	TypeLogLsReq        TypeName = iota + 10000 // 10000：查询log文件列表
@@ -198,6 +204,10 @@ func (name TypeName) String() string {
 		return "ipmi_sensor_list_req"
 	case TypeIPMISensorListRep:
 		return "ipmi_sensor_list_rep"
+	case TypeSNMPListReq:
+		return "snmp_list_req"
+	case TypeSNMPListRep:
+		return "snmp_list_rep"
 	default:
 		return "unset"
 	}
